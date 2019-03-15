@@ -117,6 +117,7 @@ connection.onstream = function(event) {
     var userElement = document.createElement('h3')
     userElement.innerHTML = '用户名：' + params.userFullName
 
+    connection.videosContainer.appendChild(roomElement);
     connection.videosContainer.appendChild(userElement);
     connection.videosContainer.appendChild(mediaElement);
 
