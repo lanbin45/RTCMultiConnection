@@ -23,7 +23,7 @@
   <body>
     <article>
       <header style="text-align: center;">
-        <h1>谷东科技视频会议demo</h1>
+        <h1>谷东科技视频会议DEMO</h1>
       </header>
 
       <div class="github-stargazers"></div>
@@ -131,12 +131,14 @@
 
         connection.videosContainer = document.getElementById('videos-container')
         connection.onstream = function(event) {
+		    console.log('TCL: connection.onstream -> event', event)
           if (document.getElementById(event.streamid)) {
             var existing = document.getElementById(event.streamid)
             existing.parentNode.removeChild(existing)
           }
 
-          var width = parseInt(connection.videosContainer.clientWidth / 2) - 20
+        //   var width = parseInt(connection.videosContainer.clientWidth / 2) - 20
+          var width = parseInt(connection.videosContainer.clientWidth) - 20
 
           if (event.stream.isScreen === true) {
             width = connection.videosContainer.clientWidth - 20
