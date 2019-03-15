@@ -45,13 +45,15 @@
     while (match = r.exec(search.substring(1)))
         params[d(match[1])] = d(match[2]);
     window.params = params;
+    var meetingNameElement = document.querySelector('#meeting-name')
+    meetingNameElement.innerHTML = '会议室名：' + params.sessionid
 		console.log('TCL: params', params)
 })();
 
-window.onReady = function () {
-  var meetingNameElement = document.querySelector('#meeting-name')
-  meetingNameElement.innerHTML = '会议室名：' + params.sessionid
-}
+// window.onReady = function () {
+//   var meetingNameElement = document.querySelector('#meeting-name')
+//   meetingNameElement.innerHTML = '会议室名：' + params.sessionid
+// }
 // ......................................................
 // ..................RTCMultiConnection Code.............
 // ......................................................
