@@ -43,12 +43,12 @@
         <div id="conversation-panel"></div>
         <div id="key-press" style="text-align: right; display: none; font-size: 11px;">
             <span style="vertical-align: middle;"></span>
-            <img src="https://webrtcweb.com/key-press.gif" style="height: 12px; vertical-align: middle;">
+            <img src="/demos/dashboard/img/key-press.gif" style="height: 12px; vertical-align: middle;">
         </div>
         <textarea id="txt-chat-message"></textarea>
         <button class="btn btn-primary" id="btn-chat-message" disabled>发送</button>
-        <img id="btn-attach-file" src="https://webrtcweb.com/attach-file.png" title="发送附件">
-        <img id="btn-share-screen" src="https://webrtcweb.com/share-screen.png" title="屏幕共享">
+        <img id="btn-attach-file" src="/demos/dashboard/img/attach-file.png" title="发送附件">
+        <img id="btn-share-screen" src="/demos/dashboard/img/share-screen.png" title="屏幕共享">
     </div>
 
     <canvas id="temp-stream-canvas" style="display: none;"></canvas>
@@ -284,7 +284,7 @@ function appendChatMessage(event, checkmark_id) {
             });
         }
     } else {
-        div.innerHTML = '<b>你:</b> <img class="checkmark" id="' + checkmark_id + '" title="Received" src="https://webrtcweb.com/checkmark.png"><br>' + event;
+        div.innerHTML = '<b>你:</b> <img class="checkmark" id="' + checkmark_id + '" title="Received" src="/demos/dashboard/img/checkmark.png"><br>' + event;
         div.style.background = '#cbffcb';
     }
 
