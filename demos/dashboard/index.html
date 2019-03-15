@@ -214,7 +214,7 @@ function updateListOfRooms(rooms) {
     $('#rooms-list').html('');
 
     if (!rooms.length) {
-        $('#rooms-list').html('<tr><td colspan=9>No active room found for this demo.</td></tr>');
+        $('#rooms-list').html('<tr><td colspan=9>当前无活跃用户.</td></tr>');
         return;
     }
 
@@ -286,13 +286,13 @@ $('#btn-show-join-hidden-room').click(function(e) {
 $('#btn-join-hidden-room').click(function() {
     var roomid = $('#txt-roomid-hidden').val().toString();
     if (!roomid || !roomid.replace(/ /g, '').length) {
-        alertBox('Please enter room-id.', 'Room ID Is Required');
+        alertBox('请输入会议室名称.', 'Room ID Is Required');
         return;
     }
 
     var fullName = $('#txt-user-name-hidden').val().toString();
     if (!fullName || !fullName.replace(/ /g, '').length) {
-        alertBox('Please enter your name.', 'Your Name Is Required');
+        alertBox('请输入您的名字.', 'Your Name Is Required');
         return;
     }
 
@@ -301,7 +301,7 @@ $('#btn-join-hidden-room').click(function() {
     if($('#txt-room-password-hidden').parent().css('display') !== 'none') {
       var roomPassword = $('#txt-room-password-hidden').val().toString();
       if (!roomPassword || !roomPassword.replace(/ /g, '').length) {
-          alertBox('Please enter room password.', 'Password Box Is Empty');
+          alertBox('请输入会议室密码.', 'Password Box Is Empty');
           return;
       }
       connection.password = roomPassword;
@@ -311,7 +311,7 @@ $('#btn-join-hidden-room').click(function() {
           joinAHiddenRoom(roomid);
         }
         else {
-          alertBox(error, 'Password Issue');
+          alertBox(error, '密码问题');
         }
       });
       return;
@@ -323,11 +323,11 @@ $('#btn-join-hidden-room').click(function() {
 function joinAHiddenRoom(roomid) {
     var initialHTML = $('#btn-join-hidden-room').html();
 
-    $('#btn-join-hidden-room').html('Please wait...').prop('disabled', true);
+    $('#btn-join-hidden-room').html('请等待...').prop('disabled', true);
 
     connection.checkPresence(roomid, function(isRoomExist) {
         if (isRoomExist === false) {
-            alertBox('No such room exist on this server. Room-id: ' + roomid, 'Room Not Found');
+            alertBox('服务器上没有当前会议室名称. Room-id: ' + roomid, 'Room Not Found');
             $('#btn-join-hidden-room').html(initialHTML).prop('disabled', false);
             return;
         }
@@ -352,16 +352,16 @@ function openCanvasDesigner() {
     var newWin = window.open(href);
     if (!newWin || newWin.closed || typeof newWin.closed == 'undefined') {
         var html = '';
-        html += '<p>Please click following link:</p>';
+        html += '<p>请打开以下链接</p>';
         html += '<p><a href="' + href + '" target="_blank">';
         if(connection.isInitiator) {
-          html += 'Click To Open The Room';
+          html += '点击创建会议室';
         }
         else {
-          html += 'Click To Join The Room';
+          html += '点击加入会议室';
         }
         html += '</a></p>';
-        alertBox(html, 'Popups Are Blocked');
+        alertBox(html, '弹窗被禁用了');
     }
 }
 
@@ -417,13 +417,13 @@ function confirmBox(message, callback) {
 $('#btn-create-room').click(function() {
     var roomid = $('#txt-roomid').val().toString();
     if (!roomid || !roomid.replace(/ /g, '').length) {
-        alertBox('Please enter room-id.', 'Room ID Is Required');
+        alertBox('请输入会议室名称.', 'Room ID Is Required');
         return;
     }
 
     var fullName = $('#txt-user-name').val().toString();
     if (!fullName || !fullName.replace(/ /g, '').length) {
-        alertBox('Please enter your name.', 'Your Name Is Required');
+        alertBox('请输入您的名字.', 'Your Name Is Required');
         return;
     }
 
@@ -432,7 +432,7 @@ $('#btn-create-room').click(function() {
     if($('#chk-room-password').prop('checked') === true){
       var roomPassword = $('#txt-room-password').val().toString();
       if (!roomPassword || !roomPassword.replace(/ /g, '').length) {
-          alertBox('Please enter room password.', 'Password Box Is Empty');
+          alertBox('请输入会议室密码.', 'Password Box Is Empty');
           return;
       }
 
@@ -441,11 +441,11 @@ $('#btn-create-room').click(function() {
 
     var initialHTML = $('#btn-create-room').html();
 
-    $('#btn-create-room').html('Please wait...').prop('disabled', true);
+    $('#btn-create-room').html('请稍候...').prop('disabled', true);
 
     connection.checkPresence(roomid, function(isRoomExist) {
         if (isRoomExist === true) {
-            alertBox('This room-id is already taken and room is active. Please join instead.', 'Room ID In Use');
+            alertBox('当前会议室名已被使用，且当前会议室已经启用，请重新创建或加入该会议室', 'Room ID In Use');
             return;
         }
 
