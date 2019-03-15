@@ -5,8 +5,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Dashboard + Video Conferencing + Chat + File Sharing | RTCMultiConnection</title>
-  <meta name="description" content="WebRTC Dashboard including support for canvas drawing, canvas data syncing, video conferencing, screen sharing and video conferencing. Including chat and file sharing.">
+  <title>谷东科技会议室系统DEMO | RTCMultiConnection</title>
+  <meta name="description" content="goolton conference meeting room">
 
   <link rel="shortcut icon" href="/demos/logo.png">
   <link rel="stylesheet" type="text/css" href="/demos/css/emojionearea.min.css">
@@ -23,137 +23,8 @@
   <script src="/demos/js/emojionearea.min.js"></script>
   <script src="/node_modules/webrtc-screen-capturing/getScreenId.js"></script>
   <!-- <script src="/node_modules/multistreamsmixer/MultiStreamsMixer.js"></script> -->
-
-<style type="text/css">
-html, body, section, ul, li, nav, a, h1, h2 {
-    padding: 0;
-    margin: 0;
-    outline: none;
-    text-shadow: none;
-    box-shadow: none;
-    border-radius: 0;
-    text-decoration: none;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 17px;
-    line-height: 1.5em;
-}
-
-input[disabled], button[disabled] {
-  background: transparent!important;
-  color: #dcd7d7!important;
-  border: 1px solid #dcd7d7!important;
-  cursor: not-allowed!important;
-  text-shadow: none!important;
-  box-shadow: none!important;
-  text-decoration: none!important;
-  outline: none!important;
-}
-</style>
 </head>
 <body>
-<style>
-.extra-controls {
-    position: absolute;
-    right: 21%;
-}
-
-#btn-comments {
-  color: red;
-  margin-top: 5px;
-  font-size: 24px;
-  text-shadow: 1px 1px white;
-}
-
-#other-videos {
-    margin-top: 5px;
-}
-
-#other-videos video {
-    width: 45%;
-    margin: 5px;
-    border: 1px solid black;
-    padding: 1px;
-    border-radius: 3px;
-}
-
-#txt-chat-message {
-    width: 100%;
-    resize: vertical;
-    margin: 5px;
-    margin-right: 0;
-    min-height: 30px;
-}
-
-#btn-chat-message {
-    margin: 5px;
-}
-
-#conversation-panel {
-    margin-bottom: 20px;
-    text-align: left;
-    max-height: 200px;
-    overflow: auto;
-    border-top: 1px solid #E5E5E5;
-    width: 106%;
-}
-
-#conversation-panel .message {
-    border-bottom: 1px solid #E5E5E5;
-    padding: 5px 10px;
-}
-
-#conversation-panel .message img, #conversation-panel .message video, #conversation-panel .message iframe {
-    max-width: 100%;
-}
-
-#main-video {
-    width: 100%;
-    margin-top: -9px;
-    border-bottom: 1px solid #121010;
-    display: none;
-    padding-bottom: 1px;
-    display: none;
-}
-
-hr {
-    height: 1px;
-    border: 0;
-    background: #E5E5E5;
-}
-
-#btn-attach-file {
-    width: 25px;
-    vertical-align: middle;
-    cursor: pointer;
-    display: none;
-}
-
-#btn-share-screen {
-    width: 25px;
-    vertical-align: middle;
-    cursor: pointer;
-    display: none;
-}
-
-.checkmark {
-    display:none;
-    width: 15px;
-    vertical-align: middle;
-}
-
-#screen-viewer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999999999999;
-    display: none;
-}
-</style>
 
 <article>
 
@@ -175,9 +46,9 @@ hr {
             <img src="https://webrtcweb.com/key-press.gif" style="height: 12px; vertical-align: middle;">
         </div>
         <textarea id="txt-chat-message"></textarea>
-        <button class="btn btn-primary" id="btn-chat-message" disabled>Send</button>
-        <img id="btn-attach-file" src="https://webrtcweb.com/attach-file.png" title="Attach a File">
-        <img id="btn-share-screen" src="https://webrtcweb.com/share-screen.png" title="Share Your Screen">
+        <button class="btn btn-primary" id="btn-chat-message" disabled>发送</button>
+        <img id="btn-attach-file" src="https://webrtcweb.com/attach-file.png" title="发送附件">
+        <img id="btn-share-screen" src="https://webrtcweb.com/share-screen.png" title="屏幕共享">
     </div>
 
     <canvas id="temp-stream-canvas" style="display: none;"></canvas>
@@ -277,12 +148,12 @@ connection.onUserStatusChanged = function(event) {
     });
 
     if (!names.length) {
-        names = ['Only You'];
+        names = ['只有你自己'];
     } else {
-        names = [connection.extra.userFullName || 'You'].concat(names);
+        names = [connection.extra.userFullName || '只有你自己'].concat(names);
     }
 
-    infoBar.innerHTML = '<b>Active users:</b> ' + names.join(', ');
+    infoBar.innerHTML = '<b>活跃用户:</b> ' + names.join(', ');
 };
 
 connection.onopen = function(event) {
@@ -413,7 +284,7 @@ function appendChatMessage(event, checkmark_id) {
             });
         }
     } else {
-        div.innerHTML = '<b>You:</b> <img class="checkmark" id="' + checkmark_id + '" title="Received" src="https://webrtcweb.com/checkmark.png"><br>' + event;
+        div.innerHTML = '<b>你:</b> <img class="checkmark" id="' + checkmark_id + '" title="Received" src="https://webrtcweb.com/checkmark.png"><br>' + event;
         div.style.background = '#cbffcb';
     }
 
@@ -537,7 +408,7 @@ connection.onFileEnd = function(file) {
     var div = progressHelper[file.uuid].div;
 
     if (file.userid === connection.userid) {
-        div.innerHTML = '<b>You:</b><br>' + html;
+        div.innerHTML = '<b>你:</b><br>' + html;
         div.style.background = '#cbffcb';
 
         if(recentFile) {
@@ -579,7 +450,7 @@ connection.onFileStart = function(file) {
             userFullName = connection.peersBackup[file.remoteUserId].extra.userFullName;
         }
 
-        div.innerHTML = '<b>You (to: ' + userFullName + '):</b><br><label>0%</label> <progress></progress>';
+        div.innerHTML = '<b>你 (to: ' + userFullName + '):</b><br><label>0%</label> <progress></progress>';
         div.style.background = '#cbffcb';
     } else {
         div.innerHTML = '<b>' + getFullName(file.userid) + ':</b><br><label>0%</label> <progress></progress>';
@@ -622,7 +493,7 @@ designer.appendTo(document.getElementById('widget-container'), function() {
             connection.open(params.sessionid, function(isRoomOpened, roomid, error) {
                 if (error) {
                     if (error === connection.errors.ROOM_NOT_AVAILABLE) {
-                        alert('Someone already created this room. Please either join or create a separate room.');
+                        alert('已经有人创建了次会议室，请重新创建新会议室或者加入已有会议室！');
                         return;
                     }
                     alert(error);
@@ -636,17 +507,17 @@ designer.appendTo(document.getElementById('widget-container'), function() {
         connection.join(params.sessionid, function(isRoomJoined, roomid, error) {
             if (error) {
                 if (error === connection.errors.ROOM_NOT_AVAILABLE) {
-                    alert('This room does not exist. Please either create it or wait for moderator to enter in the room.');
+                    alert('会议室不存在，请重试！');
                     return;
                 }
                 if (error === connection.errors.ROOM_FULL) {
-                    alert('Room is full.');
+                    alert('房间已满.');
                     return;
                 }
                 if (error === connection.errors.INVALID_PASSWORD) {
-                    connection.password = prompt('Please enter room password.') || '';
+                    connection.password = prompt('请输入密码.') || '';
                     if(!connection.password.length) {
-                        alert('Invalid password.');
+                        alert('密码无效.');
                         return;
                     }
                     connection.join(params.sessionid, function(isRoomJoined, roomid, error) {
@@ -790,10 +661,137 @@ $('#btn-share-screen').click(function() {
         navigator.mediaDevices.getUserMedia(screen_constraints).then(function (stream) {
             replaceScreenTrack(stream);
         }).catch(function (error) {
-          alert('Failed to capture your screen. Please check Chrome console logs for further information.');
+          alert('屏幕分享失败，请打开浏览器调试窗口，查看错误.');
         });
     });
 });
 </script>
 </body>
 </html>
+
+<style type="text/css">
+html, body, section, ul, li, nav, a, h1, h2 {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    text-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+    text-decoration: none;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 17px;
+    line-height: 1.5em;
+}
+
+input[disabled], button[disabled] {
+    background: transparent!important;
+    color: #dcd7d7!important;
+    border: 1px solid #dcd7d7!important;
+    cursor: not-allowed!important;
+    text-shadow: none!important;
+    box-shadow: none!important;
+    text-decoration: none!important;
+    outline: none!important;
+}
+.extra-controls {
+    position: absolute;
+    right: 21%;
+}
+
+#btn-comments {
+  color: red;
+  margin-top: 5px;
+  font-size: 24px;
+  text-shadow: 1px 1px white;
+}
+
+#other-videos {
+    margin-top: 5px;
+}
+
+#other-videos video {
+    width: 45%;
+    margin: 5px;
+    border: 1px solid black;
+    padding: 1px;
+    border-radius: 3px;
+}
+
+#txt-chat-message {
+    width: 100%;
+    resize: vertical;
+    margin: 5px;
+    margin-right: 0;
+    min-height: 30px;
+}
+
+#btn-chat-message {
+    margin: 5px;
+}
+
+#conversation-panel {
+    margin-bottom: 20px;
+    text-align: left;
+    max-height: 200px;
+    overflow: auto;
+    border-top: 1px solid #E5E5E5;
+    width: 106%;
+}
+
+#conversation-panel .message {
+    border-bottom: 1px solid #E5E5E5;
+    padding: 5px 10px;
+}
+
+#conversation-panel .message img, #conversation-panel .message video, #conversation-panel .message iframe {
+    max-width: 100%;
+}
+
+#main-video {
+    width: 100%;
+    margin-top: -9px;
+    border-bottom: 1px solid #121010;
+    display: none;
+    padding-bottom: 1px;
+    display: none;
+}
+
+hr {
+    height: 1px;
+    border: 0;
+    background: #E5E5E5;
+}
+
+#btn-attach-file {
+    width: 25px;
+    vertical-align: middle;
+    cursor: pointer;
+    display: none;
+}
+
+#btn-share-screen {
+    width: 25px;
+    vertical-align: middle;
+    cursor: pointer;
+    display: none;
+}
+
+.checkmark {
+    display:none;
+    width: 15px;
+    vertical-align: middle;
+}
+
+#screen-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999999999999;
+    display: none;
+}
+</style>
