@@ -4,7 +4,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Video Conference using RTCMultiConnection</title>
+  <title>谷东视频会议系统会议室</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="shortcut icon" href="/demos/logo.png">
   <link rel="stylesheet" href="/demos/stylesheet.css">
@@ -112,6 +112,12 @@ connection.onstream = function(event) {
         showOnMouseEnter: false
     });
 
+    var roomElement = document.createElement('h2')
+    roomElement.innerHTML = '会议室名：' + params.sessionid
+    var userElement = document.createElement('h3')
+    userElement.innerHTML = '用户名：' + params.userFullName
+
+    connection.videosContainer.appendChild(userElement);
     connection.videosContainer.appendChild(mediaElement);
 
     setTimeout(function() {
