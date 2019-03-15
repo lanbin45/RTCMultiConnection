@@ -50,7 +50,7 @@
       <script src="/dist/RTCMultiConnection.min.js"></script>
 
       <!-- custom layout for HTML5 audio/video elements -->
-      <script src="https://cdn.webrtc-experiment.com/getMediaElement.js"></script>
+      <script src="/demos/js/getMediaElement.js"></script>
 
       <!-- socket.io for signaling -->
       <script src="/socket.io/socket.io.js"></script>
@@ -257,7 +257,7 @@
     }
     video {
       object-fit: fill;
-      width: 30%;
+      width: 100%;
     }
     button,
     input,
@@ -280,6 +280,11 @@
     input,
     textarea {
       max-width: 100%;
+    }
+
+    .volume-control {
+        margin-top: 1em !important;
+        margin-left: 1em !important;
     }
 
     @media all and (max-width: 500px) {
