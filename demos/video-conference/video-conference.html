@@ -19,6 +19,8 @@
     谷东视频会议系统会议室
   </h1>
 
+  <h2 id="meeting-name">会议室名：</h2>
+
   <section class="make-center">
     <div id="videos-container" style="margin: 20px 0;"></div>
     <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
@@ -45,6 +47,11 @@
     window.params = params;
 		console.log('TCL: params', params)
 })();
+
+window.onReady = function () {
+  var meetingNameElement = document.querySelector('#meeting-name')
+  meetingNameElement.innerHTML = '会议室名：' + params.sessionid
+}
 // ......................................................
 // ..................RTCMultiConnection Code.............
 // ......................................................
@@ -74,6 +81,7 @@ connection.sdpConstraints.mandatory = {
 
 connection.videosContainer = document.getElementById('videos-container');
 connection.onstream = function(event) {
+		console.log('TCL: connection.onstream -> event', event)
     var existing = document.getElementById(event.streamid);
     if(existing && existing.parentNode) {
       existing.parentNode.removeChild(existing);
@@ -112,14 +120,11 @@ connection.onstream = function(event) {
         showOnMouseEnter: false
     });
 
-    var roomElement = document.createElement('h2')
-    roomElement.innerHTML = '会议室名：' + params.sessionid
     var userElement = document.createElement('h3')
     userElement.innerHTML = '用户名：' + params.userFullName
 
     connection.videosContainer.appendChild(roomElement);
     connection.videosContainer.appendChild(userElement);
-    connection.videosContainer.appendChild(mediaElement);
 
     setTimeout(function() {
         mediaElement.media.play();
