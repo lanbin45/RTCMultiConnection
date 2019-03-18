@@ -217,12 +217,25 @@
 
       var connection = new RTCMultiConnection()
 
-      connection.applyConstraints({
-        video: {
-          width: 1920,
-          height: 1080
-        }
-      });
+      var mediaConstraints = {
+        audio: true,
+        video:
+          DetectRTC.browser.name === 'Firefox'
+            ? {
+                width: 1920,
+                height: 1080,
+              }
+            : {
+                mandatory: {
+                  minWidth: 1920,
+                  maxWidth: 1920,
+                  minHeight: 1080,
+                  maxHeight: 1080,
+                },
+                optional: [],
+              },
+      }
+      connection.applyConstraints(mediaConstraints)
 
       connection.socketURL = '/'
       // connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
