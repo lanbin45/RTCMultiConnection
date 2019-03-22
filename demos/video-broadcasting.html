@@ -19,7 +19,7 @@
       </p>
     </h1>
 
-    <section class="make-center">
+    <div class="make-center">
       <input type="text" id="room-id" class="form-control form-control-lg" value="abcdef" autocorrect="off" autocapitalize="off" size="20" />
       <button type="button" class="btn btn-primary btn-lg btn-block" id="open-room">创建直播</button>
       <button type="button" class="btn btn-secondary btn-lg btn-block" id="join-room">观看直播</button>
@@ -31,7 +31,7 @@
         id="room-urls"
         style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"
       ></div>
-    </section>
+    </div>
 
     <script src="/dist/RTCMultiConnection.js"></script>
     <script src="/node_modules/webrtc-adapter/out/adapter.js"></script>
@@ -135,7 +135,7 @@
         }
         video.srcObject = event.stream
 
-        var width = parseInt(connection.videosContainer.clientWidth / 3) - 20
+        var width = parseInt(connection.videosContainer.clientWidth) - 20
         var mediaElement = getHTMLMediaElement(video, {
           title: event.userid,
           buttons: ['full-screen'],
