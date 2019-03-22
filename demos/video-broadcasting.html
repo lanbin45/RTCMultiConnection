@@ -11,32 +11,6 @@
     <script src="/demos/menu.js"></script>
   </head>
   <body>
-    <header>
-      <a class="logo" href="/demos/"><img src="/demos/logo.png" alt="RTCMultiConnection"/></a>
-      <nav>
-        <li>
-          <a href="/demos/">Home</a>
-        </li>
-        <li>
-          <a href="https://www.rtcmulticonnection.org/docs/getting-started/">Getting Started</a>
-        </li>
-        <li>
-          <a href="https://www.rtcmulticonnection.org/FAQ/">FAQ</a>
-        </li>
-        <li>
-          <a href="https://www.youtube.com/playlist?list=PLPRQUXAnRydKdyun-vjKPMrySoow2N4tl">YouTube</a>
-        </li>
-        <li>
-          <a href="https://rtcmulticonnection.herokuapp.com/demos/">Demos</a>
-        </li>
-        <li>
-          <a href="https://github.com/muaz-khan/RTCMultiConnection/wiki">Wiki</a>
-        </li>
-        <li>
-          <a href="https://github.com/muaz-khan/RTCMultiConnection">Github</a>
-        </li>
-      </nav>
-    </header>
 
     <h1>
       WebRTC直播DEMO
@@ -46,10 +20,10 @@
     </h1>
 
     <section class="make-center">
-      <input type="text" id="room-id" value="abcdef" autocorrect="off" autocapitalize="off" size="20" />
-      <button id="open-room">创建直播</button>
-      <button id="join-room">观看直播</button>
-      <button id="open-or-join-room">自动创建或观看直播</button>
+      <input type="text" id="room-id" class="form-control form-control-lg" value="abcdef" autocorrect="off" autocapitalize="off" size="20" />
+      <button type="button" class="btn btn-primary btn-lg btn-block" id="open-room">创建直播</button>
+      <button type="button" class="btn btn-secondary btn-lg btn-block" id="join-room">观看直播</button>
+      <button type="button" class="btn btn-success btn-lg btn-block" id="open-or-join-room">自动创建或观看直播</button>
 
       <div id="videos-container" style="margin: 20px 0;"></div>
 
